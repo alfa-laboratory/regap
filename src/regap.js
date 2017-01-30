@@ -1,5 +1,10 @@
 import RegapHTMLELement from './html-element';
 
+import AttrsMixin from './attrs-mixin';
+import CallbacksMixin from './callbacks-mixin';
+import PublicMethodsMixin from './public-methods-mixin';
+import SlotsMixin from './slots-mixin';
+
 /**
  * @typedef {Object} RegapComponentOptions
  * @property {Object.<AttrOption>} attrs
@@ -15,7 +20,7 @@ import RegapHTMLELement from './html-element';
  * @param {RegapComponentOptions} [options]
  * @returns {Function}
  */
-export default function regap(tagName, reactComponentCtor, options = {}) {
+function regap(tagName, reactComponentCtor, options = {}) {
     if (process.env.NODE_ENV !== 'production') {
         if (typeof tagName !== 'string') {
             throw new Error('Please provide tag name');
@@ -35,3 +40,14 @@ export default function regap(tagName, reactComponentCtor, options = {}) {
         ) }
     );
 }
+
+regap.HTMLElement = RegapHTMLELement;
+
+regap.mixins = {
+    AttrsMixin,
+    CallbacksMixin,
+    PublicMethodsMixin,
+    SlotsMixin
+};
+
+export default regap;
