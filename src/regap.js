@@ -44,7 +44,10 @@ function regap(tagName, reactComponentCtor, options = {}) {
         { prototype: Object.assign(
             Object.create(HTMLElement.prototype),
             options.ctor || RegapHTMLELement,
-            { _options: options }
+            {
+                _reactComponentCtor: reactComponentCtor,
+                _options: options
+            }
         ) }
     );
 }
