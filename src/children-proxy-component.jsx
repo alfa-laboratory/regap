@@ -1,16 +1,15 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 
 export default class ChildrenProxyComponent extends React.Component {
+    static propTypes = {
+        refCallback: PropTypes.func.isRequired
+    };
+
     shouldComponentUpdate() {
         return false;
     }
 
-    /**
-     * @type {HTMLElement}
-     */
-    element;
-
     render() {
-        return <regap-children ref={(element) => { this.element = element; }} />;
+        return <regap-children ref={this.props.refCallback} />;
     }
 }

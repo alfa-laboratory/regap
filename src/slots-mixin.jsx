@@ -103,6 +103,7 @@ const SlotsMixin = {
         let props = {};
 
         let slots = this._slots;
+        let childrenSlot = slots.children;
         let nodes = this.childNodes;
 
         for (let i = 0; i < nodes.length; i += 1) {
@@ -126,8 +127,8 @@ const SlotsMixin = {
             // Process any other node...
             } else if (node !== reactComponentRootElement) {
                 // Skip empty nodes for not filled children slot
-                if (!isEmptyTextNode(node) || slots.children.nodes.length > 0) {
-                    slots.children.nodes.push(node);
+                if (!isEmptyTextNode(node) || childrenSlot.nodes.length > 0) {
+                    childrenSlot.nodes.push(node);
                 }
             }
         }
@@ -149,9 +150,7 @@ const SlotsMixin = {
             if (!slot.childrenProxy) {
                 slot.childrenProxy = (
                     <ChildrenProxyComponent
-                        ref={(reactComponent) => {
-                            slot.element = reactComponent.element;
-                        }}
+                        refCallback={(element) => { slot.element = element; }}
                     />
                 );
             }
