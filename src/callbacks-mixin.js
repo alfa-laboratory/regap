@@ -76,7 +76,10 @@ const CallbacksMixin = {
                         });
                         me.dispatchEvent(event);
                         // eslint-disable-next-line
-                        me._callbacks[eventName].listeners.forEach(callback => callback(event));
+                        let listeners = me._callbacks[eventName].listeners;
+                        if (listeners) {
+                            listeners.forEach(callback => callback(event));
+                        }
                     };
 
                 return result;
