@@ -11,14 +11,14 @@ import SlotsMixin from './slots-mixin';
  * @property {Object.<CallbackOption>} callbacks
  * @property {Object.<SlotOption>} slots
  * @property {Object.<PublicMethodOption>} methods
- * @property {Function} [onBeforeCreated]
- * @property {Function} [onAfterCreated]
- * @property {Function} [onBeforeAttached]
- * @property {Function} [onAfterAttached]
- * @property {Function} [onBeforeAttributeChanged]
- * @property {Function} [onAfterAttributeChanged]
- * @property {Function} [onBeforeDetached]
- * @property {Function} [onAfterDetached]
+ * @property {Function} onBeforeCreated
+ * @property {Function} onAfterCreated
+ * @property {Function} onBeforeAttached
+ * @property {Function} onAfterAttached
+ * @property {Function} onBeforeAttributeChanged
+ * @property {Function} onAfterAttributeChanged
+ * @property {Function} onBeforeDetached
+ * @property {Function} onAfterDetached
  * @property {Function} ctor
  */
 
