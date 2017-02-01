@@ -7,12 +7,12 @@ import ChildrenProxyComponent from './children-proxy-component';
  * @property {String} name
  */
 
- /**
-  * @typedef {Object} Slot
-  * @property {String} name
-  * @property {ChildrenProxyComponent} childrenProxy
-  * @property {Array.<Node>} children
-  */
+/**
+ * @typedef {Object} Slot
+ * @property {String} name
+ * @property {ChildrenProxyComponent} childrenProxy
+ * @property {Array.<Node>} children
+ */
 
 /**
  * @param {Node} node
@@ -53,6 +53,14 @@ function fillSlotNodes(slotNode, slot) {
             slot.nodes.push(node);
         }
     }
+}
+
+/**
+ * @param {String} slotName
+ * @returns {String}
+ */
+function aliasSlot(slotName) {
+    return slotName === 'content' ? 'children' : slotName;
 }
 
 const SlotsMixin = {
@@ -108,7 +116,8 @@ const SlotsMixin = {
 
         for (let i = 0; i < nodes.length; i += 1) {
             let node = nodes[i];
-            let attrSlot = isElementNode(node) && node.getAttribute('slot');
+            let attrSlot =
+                isElementNode(node) && aliasSlot(node.getAttribute('slot'));
 
             // Process slot as attr: `<div slot="slot-name"> ... </div>`
             if (attrSlot) {
@@ -119,7 +128,7 @@ const SlotsMixin = {
 
             // Process slot as tag: `<slot name="slot-name"> ... </slot>`
             } else if (node.tagName === 'SLOT') {
-                let slot = slots[node.getAttribute('name')];
+                let slot = slots[aliasSlot(node.getAttribute('name'))];
                 if (slot) {
                     fillSlotNodes(node, slot);
                 }
