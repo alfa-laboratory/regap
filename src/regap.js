@@ -6,6 +6,8 @@ import PublicMethodsMixin from './public-methods-mixin';
 import SlotsMixin from './slots-mixin';
 
 /**
+ * Regap component description.
+ *
  * @typedef {Object} RegapComponentOptions
  * @property {Object.<AttrOption>} attrs
  * @property {Object.<CallbackOption>} callbacks
@@ -23,9 +25,11 @@ import SlotsMixin from './slots-mixin';
  */
 
 /**
- * @param {String} tagName
- * @param {Function} reactComponentCtor
- * @param {RegapComponentOptions} [options]
+ * Register WebComponent based on React component.
+ *
+ * @param {String} tagName Tag name
+ * @param {Function} reactComponentCtor React component constructor
+ * @param {RegapComponentOptions} [options] Some options
  * @returns {Function}
  */
 function regap(tagName, reactComponentCtor, options = {}) {

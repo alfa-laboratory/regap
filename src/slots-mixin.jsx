@@ -3,15 +3,19 @@ import clone from 'clone';
 import ChildrenProxyComponent from './children-proxy-component';
 
 /**
+ * Slot description.
+ *
  * @typedef {Object} SlotOption
- * @property {String} name
+ * @property {String} name React prop name
  */
 
 /**
+ * Internal slot struct.
+ *
  * @typedef {Object} Slot
- * @property {String} name
- * @property {ChildrenProxyComponent} childrenProxy
- * @property {Array.<Node>} children
+ * @property {String} name React prop name
+ * @property {ChildrenProxyComponent} childrenProxy React component to wrap children nodes
+ * @property {Array.<Node>} children Children nodes
  */
 
 /**
@@ -63,6 +67,9 @@ function aliasSlot(slotName) {
     return slotName === 'content' ? 'children' : slotName;
 }
 
+/**
+ * Mixin to bind WebComponent's slots to React component props.
+ */
 const SlotsMixin = {
     /**
      * @param {Object.<SlotOption>} slots

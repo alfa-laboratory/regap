@@ -1,31 +1,44 @@
 import clone from 'clone';
 
 /**
+ * Function that formats any value to typed value.
+ * Uses to reflect attribute to property.
+ *
  * @typedef {Function} AttrParseFunction
- * @param {*} value
- * @param {String} name
+ * @param {*} value Value
+ * @param {String} name Attribute name
  * @returns {*}
  */
 
  /**
+  * Function that formats typed value to string.
+  * Uses to reflect property to attribute.
+  *
   * @typedef {Function} AttrStringifyFunction
-  * @param {*} value
-  * @param {String} name
+  * @param {*} value Value
+  * @param {String} name Attribute name
   * @returns {String}
   */
 
 /**
+ * Attribute type description.
+ *
  * @typedef {Object} AttrType
- * @property {AttrParseFunction} parse
- * @property {AttrStringifyFunction} stringify
+ * @property {AttrParseFunction} parse Parser
+ * @property {AttrStringifyFunction} stringify Stringifier
  */
 
 /**
+ * Attribute description.
+ *
  * @typedef {Object} AttrOption
- * @property {String} name
- * @property {AttrType} type
+ * @property {String} name React component prop name
+ * @property {AttrType} type Attribute type
  */
 
+/**
+ * Mixin to reflect properties to attributes and attributes to properties.
+ */
 const AttrsMixin = {
     _attrs: null,
 

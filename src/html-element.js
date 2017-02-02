@@ -17,6 +17,9 @@ const CALLBACKS = [
     'onAfterDetached'
 ];
 
+/**
+ * Base Regap component composition.
+ */
 const Base = {
     _options: {},
     _reactComponentCtor: null,

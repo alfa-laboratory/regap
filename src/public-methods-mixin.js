@@ -2,10 +2,15 @@
 import clone from 'clone';
 
 /**
+ * Public method description.
+ *
  * @typedef {Object} MethodOption
- * @property {String} name
+ * @property {String} name React component public method name
  */
 
+/**
+ * Mixin to bind WebComponent's public methods to React component's public methods.
+ */
 const PublicMethodsMixin = {
     _methods: null,
 

@@ -1,10 +1,15 @@
 import clone from 'clone';
 
 /**
+ * Callback description.
+ *
  * @typedef {Object} CallbackOption
- * @property {String} onFunctionName
+ * @property {String} onFunctionName React component callback prop name
  */
 
+/**
+ * Mixin to bind WebComponent's callbacks to React component's callbacks.
+ */
 const CallbacksMixin = {
     _callbacks: null,
     _callbacksProps: null,
