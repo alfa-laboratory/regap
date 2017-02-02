@@ -71,6 +71,39 @@ const NAMED_SLOTS = {
     }
 };
 
+class ReactComplexNamedSlotsComponent extends React.Component {
+    static propTypes = {
+        children: React.PropTypes.node,
+        namedSlotChildren: React.PropTypes.node,
+        namedSlot2Children: React.PropTypes.node
+    };
+
+    static defaultProps = {
+        children: null,
+        namedSlotChildren: null,
+        namedSlot2Children: null
+    };
+
+    render() {
+        return (
+            <div className="children-slot">
+                {this.props.children}
+                <span className="named-slot">{this.props.namedSlotChildren}</span>
+                <span className="named-slot-2">{this.props.namedSlot2Children}</span>
+            </div>
+        );
+    }
+}
+
+const COMPLEX_NAMED_SLOTS = {
+    'named-slot': {
+        name: 'namedSlotChildren'
+    },
+    'named-slot-2': {
+        name: 'namedSlot2Children'
+    }
+};
+
 describe('SlotsMixin', () => {
     afterEach(cleanBody);
 
@@ -146,6 +179,40 @@ describe('SlotsMixin', () => {
                 '<span class="named-slot">' +
                     '<regap-children>' +
                         '<div slot="named-slot">Some <i>named</i> slot children</div>' +
+                    '</regap-children>' +
+                '</span>' +
+            '</div>'
+        );
+    });
+
+    it('should render component\'s named slots children as React component children', () => {
+        createSlotsMixinComponentCtor(
+            'x-slots-named-3',
+            ReactComplexNamedSlotsComponent,
+            COMPLEX_NAMED_SLOTS
+        );
+
+        let component = renderInBody(
+            '<x-slots-named-3>' +
+                '<div slot="named-slot">' +
+                    'Some <i>named</i> slot children' +
+                '</div>' +
+                '<div slot="named-slot-2">' +
+                    'Second named slot' +
+                '</div>' +
+            '</x-slots-named-3>'
+        );
+
+        expect(component).to.have.html(
+            '<div data-reactroot="" class="children-slot">' +
+                '<span class="named-slot">' +
+                    '<regap-children>' +
+                        '<div slot="named-slot">Some <i>named</i> slot children</div>' +
+                    '</regap-children>' +
+                '</span>' +
+                '<span class="named-slot-2">' +
+                    '<regap-children>' +
+                        '<div slot="named-slot-2">Second named slot</div>' +
                     '</regap-children>' +
                 '</span>' +
             '</div>'
