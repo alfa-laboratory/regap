@@ -5,6 +5,8 @@ import CallbacksMixin from './callbacks-mixin';
 import PublicMethodsMixin from './public-methods-mixin';
 import SlotsMixin from './slots-mixin';
 
+import Types from './types';
+
 /**
  * Regap component description.
  *
@@ -64,5 +66,7 @@ regap.mixins = {
     PublicMethodsMixin,
     SlotsMixin
 };
+
+regap.types = Types;
 
 export default regap;
