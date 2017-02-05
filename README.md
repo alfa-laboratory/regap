@@ -15,7 +15,7 @@ Use your React components as WebComponents.
 
 Regap provides feature to reflect WebComponents attributes to React components props.
 
-#### Usage example
+#### Usage example <a href="#attributes-reflection"></a>
 
 ```javascript
 // react-component.js
@@ -67,7 +67,7 @@ xExample['some-counter'] = 20; // Rerender component throw property assign.
 * `regap.types.ObjectType`
 * `regap.types.StringType`
 
-### Callbacks bindings
+### Callbacks bindings <a href="#callbacks-bindings"></a>
 
 Regap provides feature to bind WebComponents callbacks to React components callbacks props.
 
@@ -120,7 +120,7 @@ xExample.addEventListener('click', (event) => {
 });
 ```
 
-### Public methods bindings
+### Public methods bindings  <a href="#public-methods-bindings"></a>
 
 Regap provides feature to bind WebComponents public methods to React components public methods.
 
@@ -169,6 +169,51 @@ let xExample = document.body.querySelector('x-example');
 xExample.focus();
 ```
 
-### Slots
+### Slots <a href="#slots"></a>
 
 Regap provides feature to reflect WebComponents slots to React components props.
+
+```javascript
+// react-component.js
+import React from 'react';
+
+export default class ReactComponent extends React.Component {
+    static propTypes = {
+        someOtherChildren: React.PropTypes.node
+    };
+
+    render() {
+        return (
+            <div>
+                {this.props.children}
+                <span>{this.props.someOtherChildren}</span>
+            </div>
+        );
+    }
+}
+
+// regap-component.js
+import regap from 'regap';
+import ReactComponent from './react-component';
+
+regap('x-example', ReactComponent, {
+    // Place your slots description to `slots` object. Use property name as slot name and
+    // provide `name` key to describe React component's prop name.
+    //
+    // Regap provides slot `children` by default.
+    slots: {
+        'some-other-children': {
+            name: 'someOtherChildren'
+        }
+    }
+});
+
+// Render WebComponent to body
+document.body.innerHTML =
+    '<x-example>' +
+        'Some children content' +
+        '<span slot="some-other-children">' +
+            'Some other children content' +
+        '</span>'
+    '</x-example>';
+```
