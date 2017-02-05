@@ -217,3 +217,86 @@ document.body.innerHTML =
         '</span>'
     '</x-example>';
 ```
+
+## API Reference
+
+```javascript
+/**
+ * Attribute description.
+ *
+ * @typedef {Object} AttrOption
+ * @property {String} name React component prop name
+ * @property {AttrType} type Attribute type
+ */
+
+ /**
+  * Callback description.
+  *
+  * @typedef {Object} CallbackOption
+  * @property {String} onFunctionName React component callback prop name
+  */
+
+ /**
+  * Public method description.
+  *
+  * @typedef {Object} MethodOption
+  * @property {String} name React component public method name
+  */
+
+ /**
+  * Slot description.
+  *
+  * @typedef {Object} SlotOption
+  * @property {String} name React prop name
+  */
+
+/**
+ * Regap component description.
+ *
+ * @typedef {Object} RegapComponentOptions
+ * @property {Object.<AttrOption>} attrs
+ * @property {Object.<CallbackOption>} callbacks
+ * @property {Object.<SlotOption>} slots
+ * @property {Object.<PublicMethodOption>} methods
+ * @property {Function} onBeforeCreated
+ * @property {Function} onAfterCreated
+ * @property {Function} onBeforeAttached
+ * @property {Function} onAfterAttached
+ * @property {Function} onBeforeAttributeChanged
+ * @property {Function} onAfterAttributeChanged
+ * @property {Function} onBeforeDetached
+ * @property {Function} onAfterDetached
+ * @property {Object} ctor
+ */
+
+/**
+ * Register WebComponent based on React component.
+ *
+ * @param {String} tagName Tag name
+ * @param {Function} reactComponentCtor React component constructor
+ * @param {RegapComponentOptions} [options] Some options
+ * @returns {Function} WebComponent constructor.
+ */
+regap(tagName, reactComponentCtor, options = {});
+
+/**
+ * Exported Regap HTMLElement.
+ *
+ * @type {Object}
+ */
+regap.HTMLElement;
+
+/**
+ * Exported mixins collection.
+ *
+ * @type {Array.<Object>}
+ */
+regap.mixins;
+
+/**
+ * Exported predefined types collection.
+ *
+ * @type {Object.<AttrType>}
+ */
+regap.types;
+```

@@ -23,7 +23,7 @@ import Types from './types';
  * @property {Function} onAfterAttributeChanged
  * @property {Function} onBeforeDetached
  * @property {Function} onAfterDetached
- * @property {Function} ctor
+ * @property {Object} ctor
  */
 
 /**
@@ -32,7 +32,7 @@ import Types from './types';
  * @param {String} tagName Tag name
  * @param {Function} reactComponentCtor React component constructor
  * @param {RegapComponentOptions} [options] Some options
- * @returns {Function}
+ * @returns {Function} WebComponent constructor.
  */
 function regap(tagName, reactComponentCtor, options = {}) {
     if (process.env.NODE_ENV !== 'production') {
