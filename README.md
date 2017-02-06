@@ -4,6 +4,13 @@ Use your React components as WebComponents.
 
 ## Motivation
 
+React is a very popular frontend framework. A lot of companies builds own UI libraries based on React.
+Regap helps you to provide your React UI library as WebComponents. For example:
+
+* It helps your designer to build prototypes just using HTML/CSS.
+* It helps your 3rd party teams without special skills to build simple landing pages and etc.
+* It helps your to share knoweldge to all your teams about how your UI library looks and feels.
+
 ## Base concepts
 
 * [Attributes reflection](#attributes-reflection)
