@@ -115,6 +115,12 @@ const SlotsMixin = {
      * @returns {Object}
      */
     _getSlotsProps(reactComponentRootElement) {
+        if (process.env.NODE_ENV !== 'production') {
+            if (arguments.length !== 1) {
+                throw new Error('Please provide `reactComponentRootElement` to `_getSlotsProps` call');
+            }
+        }
+
         let props = {};
 
         let slots = this._slots;

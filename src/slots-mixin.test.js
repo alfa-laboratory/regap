@@ -11,7 +11,7 @@ function createSlotsMixinComponentCtor(tagName, reactSlotsComponent, slots) {
 
         attachedCallback() {
             ReactDOM.render(React.createElement(reactSlotsComponent, {
-                ...this._getSlotsProps(),
+                ...this._getSlotsProps(this._reactComponentRootElement),
                 ref: (reactComponent) => { this._reactComponent = reactComponent; }
             }), this);
 
@@ -21,6 +21,10 @@ function createSlotsMixinComponentCtor(tagName, reactSlotsComponent, slots) {
         },
 
         getSlotsProps() {
+            return this._getSlotsProps(this._reactComponentRootElement);
+        },
+
+        getSlotsPropsFailed() {
             return this._getSlotsProps();
         },
 
@@ -217,5 +221,12 @@ describe('SlotsMixin', () => {
                 '</span>' +
             '</div>'
         );
+    });
+
+    it('should throw exception during call `_getSlotsProps` without `reactComponentRootElement` argument', () => {
+        let Component = createSlotsMixinComponentCtor('x-slots-failed', ReactSimpleSlotsComponent, null);
+        let component = new Component();
+
+        expect(() => component.getSlotsPropsFailed()).to.throw('Please provide `reactComponentRootElement` to `_getSlotsProps` call');
     });
 });

@@ -97,7 +97,7 @@ const Base = {
         return {
             ...this._getAttrsProps(),
             ...this._getCallbacksProps(),
-            ...this._getSlotsProps(),
+            ...this._getSlotsProps(this._reactComponentRootElement),
             ref: this._refProp
         };
     },
