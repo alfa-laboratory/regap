@@ -72,7 +72,7 @@ const AttrsMixin = {
             let normalizedName = name.toLowerCase();
 
             if (this._attrs[normalizedName]) {
-                this._attrs[normalizedName].value = value;
+                this[normalizedName] = value;
                 return;
             }
 
