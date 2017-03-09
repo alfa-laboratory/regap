@@ -1,4 +1,5 @@
 import clone from 'clone';
+import CustomEvent from 'custom-event';
 
 /**
  * Callback description.
