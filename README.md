@@ -74,7 +74,7 @@ xExample['some-counter'] = 20; // Rerender component throw property assign.
 * `regap.types.ObjectType`
 * `regap.types.StringType`
 
-### Callbacks bindings <a href="#callbacks-binding"></a>
+### Callbacks binding <a href="#callbacks-binding"></a>
 
 Regap provides feature to bind WebComponents callbacks to React components callbacks props.
 
@@ -127,7 +127,7 @@ xExample.addEventListener('click', (event) => {
 });
 ```
 
-### Public methods bindings  <a href="#public-methods-binding"></a>
+### Public methods binding <a href="#public-methods-binding"></a>
 
 Regap provides feature to bind WebComponents public methods to React components public methods.
 
