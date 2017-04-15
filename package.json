@@ -61,5 +61,12 @@
     "sinon": "^1.17.7",
     "sinon-chai": "^2.8.0",
     "webpack": "^1.14.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alfa-laboratory/regap.git"
+  },
+  "bugs": {
+    "url": "https://github.com/alfa-laboratory/regap/issues"
   }
 }
