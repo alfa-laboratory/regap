@@ -9,7 +9,14 @@
     "test-chrome": "karma start --single-run --browsers Chrome",
     "test-firefox": "karma start --single-run --browsers Firefox",
     "test-safari": "karma start --single-run --browsers Safari",
-    "tdd": "karma start"
+    "tdd": "karma start",
+    "_changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0 -c changelog-config.js",
+    "release-patch": "npm version patch -m 'chore(*): patch version'",
+    "release-minor": "npm version minor -m 'chore(*): minor version'",
+    "release-major": "npm version major -m 'chore(*): major version'",
+    "version": "git fetch --tags && npm run _changelog && git add CHANGELOG.md",
+    "postversion": "git push origin master && git push --tags && npm run pub",
+    "pub": "npm publish ."
   },
   "author": "Vitaliy Green",
   "license": "MIT",
