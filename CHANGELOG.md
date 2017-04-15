@@ -1,3 +1,13 @@
+<a name="1.0.2"></a>
+## 1.0.2 (2017-04-15)
+
+
+### Bug Fixes
+
+* **README.md:** anchors ([29a2322](https://github.com/alfa-laboratory/regap/commit/29a2322))
+
+
+
 <a name="1.0.1"></a>
 ## 1.0.1 (2017-04-15)
 
