@@ -2,7 +2,7 @@
   "name": "regap",
   "version": "1.0.3",
   "description": "Use React Components as Web Components",
-  "main": "src/index.js",
+  "main": "regap.js",
   "scripts": {
     "lint": "eslint ./src/ --ext .js,.jsx",
     "test": "karma start --single-run",
@@ -18,7 +18,8 @@
     "release-major": "npm version major -m 'chore(*): major version'",
     "version": "git fetch --tags && npm run _changelog && git add CHANGELOG.md",
     "postversion": "git push origin master && git push --tags && npm run pub",
-    "pub": "npm publish ."
+    "compile": "gulp --cwd . --gulpfile ./node_modules/library-utils/gulpfile.js compile",
+    "pub": "npm run compile && cd .publish && npm publish"
   },
   "author": "Vitaliy Green",
   "license": "MIT",
@@ -61,6 +62,7 @@
     "karma-sinon-chai": "^1.2.4",
     "karma-sourcemap-loader": "^0.3.7",
     "karma-webpack": "^1.8.1",
+    "library-utils": "^1.2.2",
     "mocha": "^3.2.0",
     "sinon": "^1.17.7",
     "sinon-chai": "^2.8.0",
