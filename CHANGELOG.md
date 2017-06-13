@@ -1,3 +1,21 @@
+<a name="1.0.4"></a>
+## 1.0.4 (2017-06-13)
+
+
+### Bug Fixes
+
+* index file path for tests ([1155368](https://github.com/alfa-laboratory/regap/commit/1155368))
+
+
+### Features
+
+* add precommit hook ([3e040af](https://github.com/alfa-laboratory/regap/commit/3e040af))
+* add publish compiled ([71e5f7d](https://github.com/alfa-laboratory/regap/commit/71e5f7d))
+* add travis ci ([94e7d31](https://github.com/alfa-laboratory/regap/commit/94e7d31))
+* disable jsx only in *.jsx files ([74538cd](https://github.com/alfa-laboratory/regap/commit/74538cd))
+
+
+
 <a name="1.0.3"></a>
 ## 1.0.3 (2017-04-15)
 

@@ -1,6 +1,6 @@
 {
   "name": "regap",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Use React Components as Web Components",
   "main": "regap.js",
   "scripts": {
