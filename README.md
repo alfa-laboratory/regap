@@ -1,5 +1,7 @@
 # Regap
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/alfa-laboratory/regap.svg)](https://greenkeeper.io/)
+
 Use your React components as WebComponents.
 
 ## Motivation
