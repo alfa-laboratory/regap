@@ -15,7 +15,8 @@ import ChildrenProxyComponent from './children-proxy-component';
  * @typedef {Object} Slot
  * @property {String} name React prop name
  * @property {ChildrenProxyComponent} childrenProxy React component to wrap children nodes
- * @property {Array.<Node>} children Children nodes
+ * @property {HTMLElement} element HTML element of children proxy
+ * @property {Array.<Node>} nodes Children nodes
  * @property {Boolean} validRender Render was valid
  */
 
