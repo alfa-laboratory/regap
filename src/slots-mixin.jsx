@@ -16,6 +16,7 @@ import ChildrenProxyComponent from './children-proxy-component';
  * @property {String} name React prop name
  * @property {ChildrenProxyComponent} childrenProxy React component to wrap children nodes
  * @property {Array.<Node>} children Children nodes
+ * @property {Boolean} validRender Render was valid
  */
 
 /**
@@ -80,48 +81,42 @@ const SlotsMixin = {
             ...{ children: { name: 'children' } }
         };
         this._slotsNames = Object.keys(this._slots);
-        this._slotsNames.forEach((slotName) => { this._slots[slotName].nodes = []; });
+        this._slotsNames.forEach((slotName) => {
+            this._slots[slotName].nodes = [];
+            this._slots[slotName].validRender = false;
+        });
         this._slotsValid = false;
     },
 
     _resetSlots() {
-        this._slotNames.forEach((slotName) => { this._slots[slotName].nodes.length = 0; });
+        this._slotNames.forEach((slotName) => {
+            this._slots[slotName].nodes.length = 0;
+            this._slots[slotName].validRender = false;
+        });
         this._slotsValid = false;
     },
 
     _renderSlots() {
-        if (this._slotsValid) {
-            return;
-        }
-
         let slots = this._slots;
         this._slotsNames.forEach((slotName) => {
             let slot = slots[slotName];
-            if (slot.nodes.length === 0) {
+            if (slot.validRender || !slot.element || slot.nodes.length === 0) {
                 return;
             }
 
-            if (slot.element) {
-                cleanNode(slot.element);
-                slot.nodes.forEach(node => slot.element.appendChild(node));
-            }
+            cleanNode(slot.element);
+            slot.nodes.forEach(node => slot.element.appendChild(node));
+            slot.validRender = true;
         });
-
-        this._slotsValid = true;
     },
 
     /**
      * @param {HTMLElement} reactComponentRootElement
-     * @returns {Object}
      */
-    _getSlotsProps(reactComponentRootElement) {
-        if (process.env.NODE_ENV !== 'production') {
-            if (arguments.length !== 1) {
-                throw new Error('Please provide `reactComponentRootElement` to `_getSlotsProps` call');
-            }
+    _prepareNodesForSlots(reactComponentRootElement) {
+        if (this._slotsValid) {
+            return;
         }
-
-        let props = {};
 
         let slots = this._slots;
         let childrenSlot = slots.children;
@@ -155,20 +150,44 @@ const SlotsMixin = {
             }
         }
 
+        // Strip trailing white space for each slot
         this._slotsNames.forEach((slotName) => {
             let slot = slots[slotName];
-
-            // Strip trailing white space
             if (slot.nodes.length > 0) {
                 while (isEmptyTextNode(slot.nodes[slot.nodes.length - 1])) {
                     slot.nodes.pop();
                 }
             }
+        });
 
+        this._slotsValid = true;
+    },
+
+    /**
+     * @param {HTMLElement} reactComponentRootElement
+     * @returns {Object}
+     */
+    _getSlotsProps(reactComponentRootElement) {
+        if (process.env.NODE_ENV !== 'production') {
+            if (arguments.length !== 1) {
+                throw new Error('Please provide `reactComponentRootElement` to `_getSlotsProps` call');
+            }
+        }
+
+        this._prepareNodesForSlots(reactComponentRootElement);
+
+        let slots = this._slots;
+        let props = {};
+
+        this._slotsNames.forEach((slotName) => {
+            let slot = slots[slotName];
+
+            // Skip empty slots...
             if (slot.nodes.length === 0) {
                 return;
             }
 
+            // Create children proxy if not exists
             if (!slot.childrenProxy) {
                 slot.childrenProxy = (
                     <ChildrenProxyComponent
