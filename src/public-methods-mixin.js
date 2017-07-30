@@ -25,7 +25,7 @@ const PublicMethodsMixin = {
             this[methodName] = reactComponent
                 ? function regapPublicCall(...args) {
                     return reactComponent[this._methods[methodName].name]
-                        .apply(reactComponent, ...args);
+                        .call(reactComponent, ...args);
                 }.bind(this)
                 : function regapPublicCall() {
                     if (process.env.NODE_ENV !== 'production') {

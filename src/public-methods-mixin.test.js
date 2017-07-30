@@ -54,6 +54,20 @@ describe('PublicMethodsMixin', () => {
         expect(reactComponent.componentPublic1).to.have.been.calledOnce;
     });
 
+    it('should call public method on React Component and pass arguments', () => {
+        const PUBLIC_METHODS = { publicArgs: { name: 'componentPublicArgs' } };
+        let reactComponent = { componentPublicArgs: sinon.spy() };
+        let component = createTestComponent('x-public-methods-args', {
+            createdCallback() {
+                this._initializePublicMethods(reactComponent, PUBLIC_METHODS);
+            }
+        }, [PublicMethodsMixin]);
+
+        component.publicArgs(1, 'secondArgument');
+
+        expect(reactComponent.componentPublicArgs).to.have.been.calledWith(1, 'secondArgument');
+    });
+
     it('should return public method call result', () => {
         const PUBLIC_METHODS = { public1: { name: 'componentPublic1' } };
         let reactComponent = { componentPublic1: sinon.stub().returns('result') };
