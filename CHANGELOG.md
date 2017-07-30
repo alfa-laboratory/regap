@@ -1,3 +1,13 @@
+<a name="1.1.0"></a>
+# 1.1.0 (2017-07-30)
+
+
+### Features
+
+* **slots-mixin:** render slots by request ([7f0ac04](https://github.com/alfa-laboratory/regap/commit/7f0ac04))
+
+
+
 <a name="1.0.5"></a>
 ## 1.0.5 (2017-07-30)
 
