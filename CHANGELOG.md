@@ -1,3 +1,13 @@
+<a name="1.0.5"></a>
+## 1.0.5 (2017-07-30)
+
+
+### Bug Fixes
+
+* **public-methods-mixin:** arguments passing ([7b514d4](https://github.com/alfa-laboratory/regap/commit/7b514d4))
+
+
+
 <a name="1.0.4"></a>
 ## 1.0.4 (2017-06-13)
 
